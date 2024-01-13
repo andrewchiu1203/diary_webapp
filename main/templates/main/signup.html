@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="{% static 'main/style.css' %}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.svg' %}">
+
+    <meta charset="UTF-8">
+    <title>Signup</title>
+</head>
+
+<body>
+    <div class="nav-container">
+        <h1>
+            My Diary APP
+        </h1>
+    </div>
+
+    <div class="main-container">
+        <div class="head-container">
+            <h1 style="margin-bottom: 30px;">
+                <img src="{% static 'images/favicon.svg' %}" 
+                     style="max-height: 80px; float: right; margin: 10px; opacity: 0.7;">
+                User: N/A
+            </h1>
+            <h2>
+                - Signup here
+            </h2>
+        </div>
+
+        <div class="diary-container">
+            <form method="post">
+                {% csrf_token %}
+
+                {% if error %}
+                <h1 style="margin-bottom: 30px; color: red;">
+                    Error: {{ error }}
+                </h1>
+                {% endif %}
+
+                <h1>
+                    Username:
+                </h1>
+                <input type="text" name="username" class="submit-input" 
+                       style="height: 30px; width: 200px; margin-bottom: 30px;
+                              font-size: 18px; color: #574f4c; margin-top: 5px;">
+
+                <h1>
+                    Email:
+                </h1>
+                <input type="email" name="email" class="submit-input" 
+                       style="height: 30px; width: 200px; margin-bottom: 30px; 
+                              font-size: 18px; color: #574f4c; margin-top: 5px;">
+
+                <h1>
+                    Password:
+                </h1>
+                <input type="password" name="password" class="submit-input" 
+                       style="height: 30px; width: 200px; margin-bottom: 30px; 
+                              font-size: 18px; color: #574f4c; margin-top: 5px;">
+                
+                <h1>
+                    Password comfirm:
+                </h1>
+                <input type="password" name="re_password" class="submit-input" 
+                       style="height: 30px; width: 200px; margin-bottom: 30px; 
+                              font-size: 18px; color: #574f4c; margin-top: 5px;">
+                
+                <br>
+                <button type="submit" class="submit-input" style="padding: 10px; color: #574f4c;">Signup</button>
+                <br><br><br>
+                <a href = "{% url 'main:signin' %}">Go Back</a>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
