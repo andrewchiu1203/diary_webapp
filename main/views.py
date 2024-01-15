@@ -50,19 +50,18 @@ def signup(request):
     if not request.user.is_authenticated:
         if request.method == "POST":
             username = request.POST["username"]
-            email = request.POST["email"]
             password = request.POST["password"]
             re_password = request.POST["re_password"]
 
             # Check create user info and error
-            if username == "" or password == "" or re_password == "" or email == "":
+            if username == "" or password == "" or re_password == "":
                 error = "Please fill out every box"
             elif password != re_password:
                 error = "Passwords don't match"
             elif len(User.objects.filter(username = username)) != 0:
                 error = "Username already exist"
             else:
-                User.objects.create_user(username = username, password = password, email = email).save()
+                User.objects.create_user(username = username, password = password).save()
                 return redirect(reverse_lazy("main:signin"))
  
         return render(request, "main/signup.html", {

@@ -22,9 +22,8 @@
 
     <div class="main-container">
         <div class="head-container">
-            <h1 style="margin-bottom: 30px;">
-                <img src="{% static 'images/favicon.svg' %}" 
-                     style="max-height: 80px; float: right; margin: 10px; opacity: 0.7;">
+            <h1>
+                <img src="{% static 'images/favicon.svg' %}" class="main-icon">
                 User: N/A
             </h1>
             <h2>
@@ -37,42 +36,30 @@
                 {% csrf_token %}
 
                 {% if error %}
-                <h1 style="margin-bottom: 30px; color: red;">
+                <h2 class="error">
                     Error: {{ error }}
-                </h1>
+                </h2>
                 {% endif %}
 
                 <h1>
                     Username:
                 </h1>
-                <input type="text" name="username" class="submit-input" 
-                       style="height: 30px; width: 200px; margin-bottom: 30px;
-                              font-size: 18px; color: #574f4c; margin-top: 5px;">
-
-                <h1>
-                    Email:
-                </h1>
-                <input type="email" name="email" class="submit-input" 
-                       style="height: 30px; width: 200px; margin-bottom: 30px; 
-                              font-size: 18px; color: #574f4c; margin-top: 5px;">
+                <input type="text" name="username" class="submit-input">
 
                 <h1>
                     Password:
                 </h1>
-                <input type="password" name="password" class="submit-input" 
-                       style="height: 30px; width: 200px; margin-bottom: 30px; 
-                              font-size: 18px; color: #574f4c; margin-top: 5px;">
+                <input type="password" name="password" class="submit-input">
                 
                 <h1>
                     Password comfirm:
                 </h1>
-                <input type="password" name="re_password" class="submit-input" 
-                       style="height: 30px; width: 200px; margin-bottom: 30px; 
-                              font-size: 18px; color: #574f4c; margin-top: 5px;">
+                <input type="password" name="re_password" class="submit-input">
                 
                 <br>
-                <button type="submit" class="submit-input" style="padding: 10px; color: #574f4c;">Signup</button>
-                <br><br><br>
+                <button type="submit" class="submit-button">Signup</button>
+
+                <br>
                 <a href = "{% url 'main:signin' %}">Go Back</a>
 
             </form>

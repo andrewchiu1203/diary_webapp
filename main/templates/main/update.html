@@ -22,9 +22,8 @@
 
     <div class="main-container">
         <div class="head-container">
-            <h1 style="margin-bottom: 30px;">
-                <img src="{% static 'images/favicon.svg' %}" 
-                     style="max-height: 80px; float: right; margin: 10px; opacity: 0.7;">
+            <h1>
+                <img src="{% static 'images/favicon.svg' %}" class="main-icon">
                 User: {{ request.user.username }}
             </h1>
             <h2> -  view / update diary</h2>
@@ -36,10 +35,8 @@
                 {{ form.media }}
                 {{ form.as_p }}
     
-                <button type="submit" class="submit-input" style="padding: 10px; color: #574f4c;">
-                    Update
-                </button><br><br>
-                
+                <button type="submit" class="submit-button">Update</button>
+                <br>
                 <a href="{% url 'main:index' %}">Go Home</a>
             </form>
         </div>

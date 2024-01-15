@@ -22,15 +22,14 @@
 
     <div class="main-container">
         <div class="head-container">
-            <h1 style="margin-bottom: 30px;">
-                <img src="{% static 'images/favicon.svg' %}" 
-                     style="max-height: 80px; float: right; margin: 10px; opacity: 0.7;">
+            <h1>
+                <img src="{% static 'images/favicon.svg' %}" class="main-icon">
                 User: {{ request.user.username }}
             </h1>
     
-            <form method="get" style="margin-bottom: 10px;">
-                <input class="submit-input" style="height: 30px;" type="text" name="search-area">
-                <input class="submit-input" style="height: 35px; color: #574f4c;" type="submit" value = "Search">
+            <form method="get">
+                <input class="submit-input" type="text" name="search-area">
+                <button class="submit-button" type="submit">Search</button>
             </form>
         </div>
 
@@ -43,27 +42,22 @@
                 - {{ diary.title }}
             </h2>
             
-            <div class="link-container">
-                <a href = "{% url 'main:update' diary.id %}" style="margin-right: 15px;">View / Update</a>
-                <a href = "{% url 'main:delete' diary.id %}">Delete</a>
-            </div>
+            <a href = "{% url 'main:update' diary.id %}">View / Update</a>
+            <a href = "{% url 'main:delete' diary.id %}">Delete</a>
 
-            <hr style="margin-bottom: 30px; margin-top: 35px;">
+            <hr>
 
             {% empty %}
             <h2>
                 No diary found
             </h2>
             <br>
-            
             {% endfor %}
 
             <br>
-            <div class="link-container">
-                <a href = "{% url 'main:create' %}"  style="margin-right: 15px;">Create Diary</a>
-                <a href = "{% url 'main:index' %}"   style="margin-right: 15px;">View all diary</a>
-                <a href = "{% url 'main:signout' %}" style="margin-right: 15px;">Logout</a>
-            </div>
+            <a href = "{% url 'main:create' %}">Create Diary</a>
+            <a href = "{% url 'main:index' %}">View all diary</a>
+            <a href = "{% url 'main:signout' %}">Logout</a>
         </div>
     </div>
 </body>
