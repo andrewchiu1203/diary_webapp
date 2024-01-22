@@ -2,14 +2,14 @@
 
 .nav-container{
     margin: 0px auto;
-    padding-top: 20px;
+    padding-top: 2px;
     max-width: 600px;
     text-align: center;
     color: #423b39;
 }
 
 .main-container{
-    margin: 40px auto;
+    margin: 30px auto;
     max-width: 600px;
     color: #423b39;
 }
@@ -111,4 +111,24 @@ h1{
 h2{
     font-family: 'Montserrat';
     font-weight: 300;
+}
+
+select{
+    outline: none;
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 1.5px;
+
+    color: #574f4c;
+    border-color: #574f4c;
+
+    margin-top: 10px;
+
+    height: 35px;
+    width: 135px;
+    font-size: 18px;
+}
+
+option:hover{
+    background-color: black;
 }

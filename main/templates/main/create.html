@@ -34,6 +34,20 @@
                 {% csrf_token %}        
                 {{ form.media }}
                 {{ form.as_p }}
+
+                <select name="color">
+                    <option value="(0, 0, 0, 0)">
+                        Select Color
+                    </option>
+
+                    {% for color in colors %}
+                    <option value="{{ color.color }}"
+                            style="background-color: rgb{{ color.color }};">
+                        {{ color.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <br>
     
                 <button type="submit" class="submit-button">Create</button>
                 <br>

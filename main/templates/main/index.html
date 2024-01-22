@@ -38,8 +38,13 @@
             <h2>
                 {{ forloop.counter }} : {{ diary.created }}
             </h2>
+
             <h2>
                 - {{ diary.title }}
+                <div style="height: 20px; width: 20px; border-radius: 15px; float: right;
+                            margin-right: 25px; margin-top: 9px;
+                            background-color: rgb{{ diary.color }};">
+                </div>
             </h2>
             
             <a href = "{% url 'main:update' diary.id %}">View / Update</a>
