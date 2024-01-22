@@ -9,7 +9,7 @@
 }
 
 .main-container{
-    margin: 30px auto;
+    margin: 25px auto;
     max-width: 600px;
     color: #423b39;
 }
@@ -88,6 +88,14 @@
     font-size: 16px;
 }
 
+.django-ckeditor-widget{
+    border-style: solid;
+    border-width: 1.5px;
+    border-radius: 8px;
+    border-color: #574f4c;
+    padding: 3px;
+}
+
 hr{
     margin-bottom: 30px;
     margin-top: 30px;
@@ -122,7 +130,7 @@ select{
     color: #574f4c;
     border-color: #574f4c;
 
-    margin-top: 10px;
+    margin-top: 20px;
 
     height: 35px;
     width: 135px;
