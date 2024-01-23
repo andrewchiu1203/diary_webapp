@@ -27,8 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-
-# Application definition
+CKEDITOR_CONFIGS = {
+    'default': {
+        'height': 300,
+    },
+}
 
 INSTALLED_APPS = [
     'ckeditor',

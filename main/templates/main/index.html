@@ -4,8 +4,6 @@
 
 <head>
     <link href="{% static 'main/style.css' %}" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.svg' %}">
     
@@ -35,16 +33,11 @@
 
         <div class="diary-container">
             {% for diary in diarys %}
-            <h2>
+            <h2 id="created_time_{{ forloop.counter }}">
                 {{ forloop.counter }} : {{ diary.created }}
             </h2>
-
             <h2>
                 - {{ diary.title }}
-                <div style="height: 20px; width: 20px; border-radius: 15px; float: right;
-                            margin-right: 25px; margin-top: 9px;
-                            background-color: rgb{{ diary.color }};">
-                </div>
             </h2>
             
             <a href = "{% url 'main:update' diary.id %}">View / Update</a>
@@ -62,8 +55,44 @@
             <a href = "{% url 'main:create' %}">Create Diary</a>
             <a href = "{% url 'main:index' %}">View all diary</a>
             <a href = "{% url 'main:signout' %}">Logout</a>
+
         </div>
     </div>
+
+    <script>
+        var options = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' };
+        var count = 0;
+        var year = 0, month = 0, day = 0, hour = 0, minute = 0;
+        var created_time, formatted_time
+        var offset = new Date().getTimezoneOffset() / 60
+
+        while(true){
+            count += 1;
+            try{
+                created_time = document.getElementById("created_time_" + count).innerHTML;
+                year = parseInt(created_time.substr(21, 4));
+                month = parseInt(created_time.substr(26, 2));
+                day = parseInt(created_time.substr(29, 2));
+                hour = parseInt(created_time.substr(32, 2));
+                minute = parseInt(created_time.substr(35, 2));
+
+                processed_time = new Date(year, month - 1, day, hour, minute);
+                processed_time.setHours(hour - offset);
+                formatted_time = processed_time.toLocaleTimeString("en-US", options);
+
+                console.log("-" + year + "-" + month + "-" + day + "-" + hour + "-" + minute + "-");
+                console.log(processed_time);
+                console.log(formatted_time);
+                console.log("");
+
+                document.getElementById("created_time_" + count).innerHTML = formatted_time;
+
+            }catch{
+                break;
+            }
+        }
+
+    </script>
 </body>
 
 </html>

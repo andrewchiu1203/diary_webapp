@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.urls.base import reverse_lazy
 from .forms import DiaryForm
-from main.models import Diary, Color
+from main.models import Diary
 
 def blank(request):
     return redirect(reverse_lazy("main:index"))
@@ -15,7 +15,8 @@ def index(request):
     search_input = request.GET.get("search-area") or ""
 
     if search_input:
-        diarys = Diary.objects.filter(user = request.user, title__icontains = search_input)
+        diarys = Diary.objects.filter(user = request.user, 
+                                      title__icontains = search_input)
     else:
         diarys = Diary.objects.filter(user = request.user)
 
@@ -82,16 +83,14 @@ def update(request, current_id):
     if request.method == "POST":
         new_title = request.POST["title"]
         new_body = request.POST["body"]
-        new_color = request.POST["color"]
-        new_color_object = Color.objects.get(color = new_color)
 
-        Diary.objects.filter(id = current_id, user = request.user).update(title = new_title)
-        Diary.objects.filter(id = current_id, user = request.user).update(body = new_body)
-        Diary.objects.filter(id = current_id, user = request.user).update(color = new_color_object)
+        Diary.objects.filter(id = current_id, 
+                             user = request.user).update(title = new_title)
+        Diary.objects.filter(id = current_id, 
+                             user = request.user).update(body = new_body)
 
     diary = Diary.objects.get(id = current_id, user = request.user)
     form = DiaryForm(instance = diary)
-    colors = Color.objects.all()
 
     if form.is_valid():
         form.save()
@@ -99,7 +98,6 @@ def update(request, current_id):
     return render(request, "main/update.html", {
         "diary" : diary,
         "form" : form,
-        "colors" : colors,
     })
 
 def create(request):
@@ -109,18 +107,14 @@ def create(request):
     if request.method == "POST":
         new_title = request.POST["title"]
         new_body = request.POST["body"]
-        new_color = request.POST["color"]
-        new_color_object = Color.objects.get(color = new_color)
 
-        Diary(user = request.user, title = new_title, body = new_body, color = new_color_object).save()
+        Diary(user = request.user, title = new_title, body = new_body).save()
 
         return redirect(reverse_lazy("main:index"))
 
-    colors = Color.objects.all()
     
     return render(request, "main/create.html", {
         "form" : DiaryForm(),
-        "colors" : colors,
     })
 
 def delete(request, current_id):

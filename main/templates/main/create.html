@@ -4,8 +4,6 @@
 
 <head>
     <link href="{% static 'main/style.css' %}" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.svg' %}">
 
@@ -34,23 +32,9 @@
                 {% csrf_token %}        
                 {{ form.media }}
                 {{ form.as_p }}
-
-                <select name="color">
-                    <option value="(0, 0, 0, 0)">
-                        Select Color
-                    </option>
-
-                    {% for color in colors %}
-                    <option value="{{ color.color }}"
-                            style="background-color: rgb{{ color.color }};">
-                        {{ color.name }}
-                    </option>
-                    {% endfor %}
-                </select>
-                <br>
     
                 <button type="submit" class="submit-button">Create</button>
-                <br>
+                <br><br><br>
                 <a href="{% url 'main:index' %}">Go Home</a>
             </form>
         </div>

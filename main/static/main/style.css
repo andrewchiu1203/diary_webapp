@@ -1,7 +1,5 @@
-/* This style css is shared among all html */
-
 .nav-container{
-    margin: 0px auto;
+    margin: 10px auto;
     padding-top: 2px;
     max-width: 600px;
     text-align: center;
@@ -9,7 +7,7 @@
 }
 
 .main-container{
-    margin: 27px auto;
+    margin: 30px auto;
     max-width: 600px;
     color: #423b39;
 }
@@ -29,7 +27,7 @@
 
 .diary-container{
     background-color: #FAFAFA;
-    padding: 30px;
+    padding: 15px 30px 15px 30px;
     border-radius: 0px 0px 30px 30px;  
 }
 
@@ -56,14 +54,11 @@
     outline: none;
     border-style: solid;
     border-radius: 8px;
+    border-width: 1.5px;
 
     background-color: white;
     color: #574f4c;
     border-color: #574f4c;
-
-    border-width: 1.5px;
-    margin-bottom: 25px;
-    margin-top: 25px;
 
     height: 35px;
     width: 80px;
@@ -78,22 +73,16 @@
 
 #id_title{
     outline: none;
-    border-radius: 5px;
-    border-width: 1.5px;
+    border-style: solid;
+    border-width: 1.4px;
     
-    background-color: white;
+    display: block;
     color: #574f4c;
-    border-color: #574f4c;
+    border-color: #cecece;
+
+    margin-top: 13px;
 
     font-size: 16px;
-}
-
-.django-ckeditor-widget{
-    border-style: solid;
-    border-width: 1.5px;
-    border-radius: 8px;
-    border-color: #574f4c;
-    padding: 3px;
 }
 
 hr{
@@ -121,22 +110,7 @@ h2{
     font-weight: 300;
 }
 
-select{
-    outline: none;
-    border-style: solid;
-    border-radius: 8px;
-    border-width: 1.5px;
-
-    color: #574f4c;
-    border-color: #574f4c;
-
-    margin-top: 20px;
-
-    height: 35px;
-    width: 135px;
-    font-size: 18px;
-}
-
-option:hover{
-    background-color: black;
+h3{
+    font-family: 'Montserrat';
+    font-weight: 300;
 }

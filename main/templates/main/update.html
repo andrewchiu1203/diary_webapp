@@ -4,8 +4,6 @@
 
 <head>
     <link href="{% static 'main/style.css' %}" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.svg' %}">
 
@@ -28,10 +26,6 @@
             </h1>
             <h2>
                  -  view / update diary
-                 <div style="height: 20px; width: 20px; border-radius: 15px; float: right;
-                            margin-right: 180px; margin-top: 6px;
-                            background-color: rgb{{ diary.color }};">
-                </div>
             </h2>
         </div>
 
@@ -41,22 +35,8 @@
                 {{ form.media }}
                 {{ form.as_p }}
 
-                <select name="color">
-                    <option value="{{ diary.color }}">
-                        Change Color
-                    </option>
-
-                    {% for color in colors %}
-                    <option value="{{ color.color }}" 
-                            style="background-color: rgb{{ color.color }};">
-                        {{ color.name }} 
-                    </option>
-                    {% endfor %}
-                </select>
-                <br>
-    
                 <button type="submit" class="submit-button">Update</button>
-                <br>
+                <br><br><br>
                 <a href="{% url 'main:index' %}">Go Home</a>
             </form>
         </div>
