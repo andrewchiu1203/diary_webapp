@@ -11,7 +11,7 @@ class Color(models.Model):
 
 class Diary(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, null = True, blank = True)
-    title = models.CharField(max_length = 128)
+    title = models.CharField(max_length = 128, null = True)
     body = RichTextField(blank = True, null = True)
     created = models.CharField(default = timezone.now, max_length = 128)
     order = models.DateTimeField(auto_now_add = True, null = True)
