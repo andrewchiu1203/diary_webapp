@@ -35,7 +35,22 @@
                 {{ form.media }}
                 {{ form.as_p }}
 
+                <select name="color">
+                    {% if diary.color %}
+                    <option value="{{ diary.color }}">{{ diary.color }}</option>
+                    {% else %}
+                    <option value="">No Color</option>
+                    {% endif %}
+
+                    {% for color in colors %}
+                    <option value="{{ color.color }}">{{color.color}}</option>
+                    {% endfor %}
+                    <option value="">No Color</option>
+                </select>
+                
+                <br><br>
                 <button type="submit" class="submit-button">Update</button>
+
                 <br><br><br>
                 <a href="{% url 'main:index' %}">Go Home</a>
             </form>

@@ -32,8 +32,17 @@
                 {% csrf_token %}        
                 {{ form.media }}
                 {{ form.as_p }}
-    
+
+                <select name="color">
+                    <option value="">No Color</option>
+                    {% for color in colors %}
+                    <option value="{{ color.color }}">{{color.color}}</option>
+                    {% endfor %}
+                </select>
+                
+                <br><br>
                 <button type="submit" class="submit-button">Create</button>
+
                 <br><br><br>
                 <a href="{% url 'main:index' %}">Go Home</a>
             </form>

@@ -33,9 +33,16 @@
 
         <div class="diary-container">
             {% for diary in diarys %}
-            <h2 id="created_time_{{ forloop.counter }}">
-                {{ forloop.counter }} : {{ diary.created }}
-            </h2>
+            <div>
+                <h2 class="color-mark" id="color_mark_{{ forloop.counter }}">
+                    {{diary.color}}
+                </h2>
+
+                <h2 id="created_time_{{ forloop.counter }}">
+                    {{ diary.created }}
+                </h2>
+            </div>
+
             <h2>
                 - {{ diary.title }}
             </h2>
@@ -60,11 +67,13 @@
     </div>
 
     <script>
-        var options = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' };
+        // Timezone handle
+        var options = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric',
+                        month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'};
         var count = 0;
         var year = 0, month = 0, day = 0, hour = 0, minute = 0;
         var created_time, formatted_time
-        var offset = new Date().getTimezoneOffset() / 60
+        var offset = new Date().getTimezoneOffset() / 60 // convert from sec to hour
 
         while(true){
             count += 1;
@@ -92,6 +101,23 @@
             }
         }
 
+        // Color mark handle
+        var count = 0;
+        var color, color_object;
+
+        while(true){
+            count += 1;
+            try{
+                color = document.getElementById("color_mark_" + count).innerHTML;
+                color_object = document.getElementById("color_mark_" + count);
+
+                color_object.style.backgroundColor = color;
+                color_object.innerHTML = "";
+                console.log(color)
+            }catch{
+                break;
+            }
+        }
     </script>
 </body>
 
