@@ -8,6 +8,5 @@ By making use of ckeditor, users are not restricted to plain text for their diar
 Instead, they are able to make fancy styles and emoji because the app is able to store those formated text in a modified Django CharField.
  
 ### Dependancies
-- Python 3.11
 - Django
 - Django ckeditor
